@@ -1,0 +1,30 @@
+{
+  "name": "project-mapper",
+  "version": "0.0.1",
+  "description": "Gets Kineo project codes",
+  "preferGlobal": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/taylortom/project-mapper"
+  },
+  "keywords": [
+    "cli",
+    "kineo"
+  ],
+  "author": "Thomas Taylor <hello@tomtaylor.name>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/taylortom/project-mapper/issues"
+  },
+  "homepage": "https://github.com/taylortom/project-mapper",
+  "bin": {
+    "kpro": "index.js"
+  },
+  "codes": "/Users/tom/Projects/codes.json",
+  "dependencies": {
+    "async": "^1.4.2",
+    "chalk": "^1.1.0",
+    "fs-extra": "^0.24.0",
+    "minimist": "^1.2.0"
+  }
+}
