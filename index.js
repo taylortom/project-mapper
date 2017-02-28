@@ -30,6 +30,9 @@ function processCommand() {
     case "find":
       searchProjects(args._[1]);
       break;
+    case "add":
+      addProject(args._[1], args._[2], args._[3]);
+      break;
     default:
       console.log(`Unknown command: "${command}"`);
       break;
@@ -62,12 +65,36 @@ function searchProjects(search) {
   }
 }
 
+function addProject(name, newCode, oldCode) {
+  if(!name || !newCode || !oldCode) {
+    onError(`Expected 3 arguments: name, code and old code`);
+  }
+  var project = lookupProject(newCode) || lookupProject(oldCode);
+  if(project) {
+    onError(`Project already exists as '${project.name}'`);
+  }
+  codes.push({
+    name: name,
+    code: newCode,
+    oldCode: oldCode
+  });
+  fs.writeJSON(packageJSON.codes, codes, function(error) {
+    if(error) onError(error);
+    onSuccess(`Added '${name}' to project list`);
+  });
+}
+
 /**
 * Log shortcuts
 */
 
-function onError(error) {
-  console.log(`${chalk.red('Error')}: ${error}`);
+function onSuccess(msg) {
+  console.log(`${chalk.green('Success')}: ${msg}`);
+  process.exit(0);
+}
+
+function onError(msg) {
+  console.log(`${chalk.red('Error')}: ${msg}`);
   process.exit(1);
 }
 

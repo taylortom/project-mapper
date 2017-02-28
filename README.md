@@ -18,3 +18,5 @@ Uses a json file specified in the package.json of this repository. This file mus
 Look up project info using the old project code: `kpro map OLD_CODE`
 
 Look up project by name `kpro find TEXT`
+
+Add new project: `kpro add NAME NEW_CODE OLD_CODE`
